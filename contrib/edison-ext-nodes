@@ -1,0 +1,19 @@
+#!/usr/bin/env python
+# this code is heavily (almost entirely!) based upon (s/based upon/copied from/g) the cobbler-ext-nodes script that ships with cobbler
+# It has not yet been tested in a production environment!
+import yaml # PyYAML version
+import urlgrabber
+import sys
+
+if __name__ == "__main__":
+   hostname = None
+   try:
+      hostname = sys.argv[1]
+   except:
+      print "usage: cobbler-ext-nodes <hostname>"
+
+   if hostname is not None:
+       url = "http://%s:%s/api/puppet/%s/?format=yaml" % ('edison', 80, hostname)
+       print urlgrabber.urlread(url)
+
+

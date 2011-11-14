@@ -1,0 +1,31 @@
+{% extends "base.tpl" %}
+{% block main %}
+    <div id='loginform'>
+    {% if form.errors %}
+        <p class="error">Sorry, that's not a valid username or password</p>
+    {% endif %}
+        <!-- Content -->
+        <p>Please log in to continue</p>
+        <form action="" method="post">
+	    {% csrf_token %}
+            <div>
+                <div><label for="username">User name:</label></div>
+                <div><input type="text" name="username" value="" id="username"></div>
+            </div>
+            <div>
+                <div><label for="password">Password:</label></div>
+                <div><input type="password" name="password" value="" id="password"></div>
+            </div>
+            <div>
+                <button class="button positive">
+                    <img src="/media/images/icons/tick.png" alt=""/>Login
+                </button>
+                <input type="hidden" name="next" value="/" />
+            </div>
+        </form>
+        <script type="text/javascript">
+            document.getElementById('id_username').focus()
+        </script>
+    </div>
+{% endblock %}
+
